@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>早餐店品項 Breakfast Wiki - 台灣常見早餐營養知識庫</title>
+  <meta name="description" content="參考 Karpathy LLM Wiki 概念建立的台灣早餐店餐點熱量與營養素百科，涵蓋蛋餅、吐司、漢堡、鐵板麵、飯糰及飲品。">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 1. 網站頂部導覽列 -->
+  <nav class="site-nav">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/favicon.svg" alt="Breakfast Wiki Logo" class="brand-icon">
+        <span>早餐店品項 Breakfast Wiki</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">品項百科</a>
+        <a href="pages/about.html" class="nav-link">關於本專案</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 2. 首頁 Hero 英雄介紹區 -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="hero-tag">🍳 台灣在地早餐知識庫</div>
+          <h1 class="hero-title">早餐店品項 Breakfast Wiki</h1>
+          <p class="hero-subtitle">從日常早餐開始，認識每一份餐點的營養資訊。</p>
+          <p class="hero-desc">
+            每天早晨走進早餐店，面對琳瑯滿目的菜單：蛋餅、三明治、鐵板麵或奶茶，該如何聰明選擇？
+            本知識庫依據 Karpathy LLM Wiki 概念持續彙整各類餐點的熱量、碳水化合物、蛋白質與脂肪估算，助你輕鬆搭配活力每一天！
+          </p>
+          <div class="hero-stats">
+            <div class="stat-pill">
+              <span class="stat-value" id="totalItemsStat">18 項</span>
+              <span class="stat-label">收錄品項</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-value">5 大類</span>
+              <span class="stat-label">餐點分類</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-value" id="avgCaloriesStat">358 kcal</span>
+              <span class="stat-label">平均熱量</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/images/breakfast-hero.svg" alt="美好早餐插圖" class="hero-image">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. 分類篩選與工具列區 -->
+  <section class="toolbar-section">
+    <div class="container">
+      <div class="toolbar-wrapper">
+        <!-- 分類按鈕 -->
+        <div class="category-filters" role="group" aria-label="早餐分類篩選">
+          <button class="category-btn active" data-category="全部">全部</button>
+          <button class="category-btn" data-category="蛋餅類">蛋餅類</button>
+          <button class="category-btn" data-category="吐司／三明治">吐司／三明治</button>
+          <button class="category-btn" data-category="漢堡／炸物">漢堡／炸物</button>
+          <button class="category-btn" data-category="鐵板麵／中式">鐵板麵／中式</button>
+          <button class="category-btn" data-category="飲品與湯品">飲品與湯品</button>
+        </div>
+
+        <!-- 即時搜尋 -->
+        <div class="search-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="搜尋餐點（例：蛋餅、鮪魚）..." aria-label="搜尋早餐品項">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 早餐品項卡片網格區 -->
+  <main class="cards-section">
+    <div class="container">
+      <div class="results-meta">
+        <span id="resultsCount">載入中...</span>
+        <span>點擊「查看詳細資訊」瀏覽營養配比與搭餐建議</span>
+      </div>
+
+      <!-- 卡片渲染目標容器 -->
+      <div class="cards-grid" id="breakfastCardsContainer">
+        <!-- 由 main.js 動態渲染 -->
+      </div>
+    </div>
+  </main>
+
+  <!-- 5. 詳細資訊彈出視窗 (Modal) -->
+  <div class="modal-overlay" id="detailModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="關閉視窗">✕</button>
+      
+      <div class="modal-image-wrap">
+        <img id="modalImage" class="modal-image" src="" alt="">
+      </div>
+
+      <div class="modal-content">
+        <div class="modal-header-meta">
+          <span class="card-category-badge" id="modalCategoryBadge">分類</span>
+          <span class="health-badge" id="modalHealthBadge">標籤</span>
+        </div>
+
+        <h2 class="modal-title" id="modalTitle">餐點名稱</h2>
+        <p class="modal-desc" id="modalDesc">簡短說明</p>
+
+        <!-- 三大營養素佔比分析 -->
+        <h3 class="modal-section-title">📊 三大營養素估算配比</h3>
+        <div class="macro-bars">
+          <div class="macro-bar-row">
+            <div class="macro-bar-info">
+              <span>🌾 碳水化合物 (Carbs)</span>
+              <span id="modalCarbsText">0g</span>
+            </div>
+            <div class="macro-bar-track">
+              <div class="macro-bar-fill carbs" id="modalCarbsBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="macro-bar-row">
+            <div class="macro-bar-info">
+              <span>🥩 蛋白質 (Protein)</span>
+              <span id="modalProteinText">0g</span>
+            </div>
+            <div class="macro-bar-track">
+              <div class="macro-bar-fill protein" id="modalProteinBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="macro-bar-row">
+            <div class="macro-bar-info">
+              <span>🥑 脂肪 (Fat)</span>
+              <span id="modalFatText">0g</span>
+            </div>
+            <div class="macro-bar-track">
+              <div class="macro-bar-fill fat" id="modalFatBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px; text-align: right; font-weight: 700; color: #D35400; font-size: 0.95rem;">
+            總估算熱量：<span id="modalTotalCalText">0 kcal</span>
+          </div>
+        </div>
+
+        <!-- 搭餐與健康小訣竅 -->
+        <div class="modal-tips-box">
+          <div class="modal-tips-title">💡 營養師日常搭餐小訣竅</div>
+          <div class="modal-tips-content" id="modalTipsContent">建議說明內容...</div>
+        </div>
+
+        <!-- 數據來源標記 -->
+        <div class="modal-source-meta">
+          <span>📌 估算來源：</span>
+          <span id="modalSourceText">資料庫來源</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 網站頁尾 (嚴格滿足規範) -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span>🍳 早餐店品項 Breakfast Wiki</span>
+      </div>
+      <div class="footer-disclaimer">
+        ⚠️ <strong>免責聲明與提醒：</strong>本網站所有營養資訊僅供一般飲食規劃與大眾日常參考。熱量及各項營養素數據會因各早餐店之品牌、食材規格、分量比例及煎台烹調手法（如用油量、抹醬厚度、醬汁調配）不同而有所差異，非精準化學檢驗結果。
+      </div>
+      <div class="footer-links">
+        <a href="index.html">首頁品項</a>
+        <a href="pages/about.html">關於知識庫</a>
+        <a href="AGENTS.md">AI 開發規範 (AGENTS.md)</a>
+      </div>
+      <div class="footer-copyright">
+        © 2026 Breakfast Wiki Project. Inspired by Karpathy LLM Wiki Architecture.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

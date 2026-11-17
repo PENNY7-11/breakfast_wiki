@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於本專案 - 早餐店品項 Breakfast Wiki</title>
+  <meta name="description" content="了解早餐店品項 Breakfast Wiki 的專案由來、Karpathy LLM Wiki 知識庫架構、營養標籤意涵與 AI 維護機制。">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- 網站頂部導覽列 -->
+  <nav class="site-nav">
+    <div class="container">
+      <a href="../index.html" class="nav-brand">
+        <img src="../assets/images/favicon.svg" alt="Breakfast Wiki Logo" class="brand-icon">
+        <span>早餐店品項 Breakfast Wiki</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">品項百科</a>
+        <a href="about.html" class="nav-link active">關於本專案</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 內容區塊 -->
+  <main class="article-page">
+    <div class="container">
+      <article class="article-card">
+        <header class="article-header">
+          <div class="hero-tag">📖 關於與設計哲學</div>
+          <h1>關於「早餐店品項 Breakfast Wiki」</h1>
+          <p>以 Karpathy LLM Wiki 概念為基石，打造持久累積、條理清晰的日常飲食知識庫。</p>
+        </header>
+
+        <section class="article-body">
+          <h2>🌟 一、專案緣起與初衷</h2>
+          <p>
+            在台灣，傳統與連鎖早餐店是無數上班族、學生與家庭每日活力的起點。從酥脆的蛋餅、現烤熱騰騰的吐司、香濃的黑胡椒鐵板麵，到不可或缺的冰奶茶與熱豆漿，選擇繁多又美味。
+          </p>
+          <p>
+            然而，外食早餐往往隱含高油脂、過量精緻糖或蛋白質不足的問題。大眾在點餐時，很難迅速查閱餐點的具體熱量與三大營養素比例。「早餐店品項 Breakfast Wiki」便是為此而生——以溫暖生活感、易讀的卡片介面，將常見品項的營養估算結構化呈現，讓健康的日常選擇變得輕鬆自然。
+          </p>
+
+          <h2>🧠 二、Karpathy LLM Wiki 核心架構借鑒</h2>
+          <p>
+            傳統的 LLM 應用大多偏向 RAG（檢索增強生成）：每次使用者發問時，AI 從零開始抓取片段資料並臨時拼湊回答，知識沒有累積，各文件間的脈絡與矛盾也無法沉澱。
+          </p>
+          <p>
+            前 OpenAI 共同創辦人 Andrej Karpathy 提出的 <strong>LLM Wiki</strong> 概念則完全不同：
+          </p>
+          <div class="callout-box">
+            <p><strong>「The wiki is a persistent, compounding artifact.」</strong>（Wiki 是一份持久且持續複利增長的知識產物）</p>
+            <p>
+              在 LLM Wiki 體系中：人類扮演「策劃者與探索者（Curator）」，而 AI Agent 則扮演「維護者與工程師（Maintainer）」。資料一旦經過彙整，便形成結構化的頁面與關聯；未來每一次新增品項、問答或修正，都是在現有基石上複利增長。
+            </p>
+          </div>
+
+          <p>本專案實踐了 Karpathy LLM Wiki 的三層架構：</p>
+          <ul>
+            <li><strong>原始來源層（Raw Sources）：</strong>衛福部食品營養資料庫、連鎖早餐店製程配方、營養師公開文獻，作為不可竄改的事實基底。</li>
+            <li><strong>知識維基層（The Wiki）：</strong>包含 <code>data/breakfast.json</code>、分類頁面與卡片，結構化記錄每個品項的數據與搭餐洞見。</li>
+            <li><strong>規範約束層（The Schema - <code>AGENTS.md</code>）：</strong>嚴格定義 AI 新增、修訂、檢查時必須遵守的命名規範、資料格式與品質標準。</li>
+          </ul>
+
+          <h2>🏷️ 三、健康標籤分級準則</h2>
+          <p>
+            為避免將食物貼上二元對立的「好」或「壞」標籤，本知識庫遵循現代營養學的<strong>「食物中立（Food Neutrality）」</strong>原則，僅提供客觀的攝取注意事項與搭配建議：
+          </p>
+          <ul>
+            <li>
+              <strong style="color: #2E7D32;">🟢 均衡搭配推薦 (good)：</strong>
+              營養比例相對均衡，蛋白質質量良好（如原味蛋餅、鮪魚吐司、無糖豆漿），是日常推薦的基底選擇。
+            </li>
+            <li>
+              <strong style="color: #B26A00;">🟡 份量留意 (mid)：</strong>
+              美味可口但碳水化合物比例較高或含適量添加糖（如玉米蛋餅、蘿蔔糕、古早味紅茶），建議留意整天其他餐次的總醣量。
+            </li>
+            <li>
+              <strong style="color: #C62828;">🟠 油脂或鈉含量留意 (alert)：</strong>
+              油炸、加工肉品或重燴醬料（如卡啦雞腿堡、黑胡椒鐵板麵、飯糰包油條、奶精奶茶），油脂或鈉含量較顯著，建議偶爾享用或採去皮、少醬、分食等技巧。
+            </li>
+          </ul>
+
+          <h2>🤖 四、如何由 AI 依照 <code>AGENTS.md</code> 擴充</h2>
+          <p>
+            專案根目錄中的 <code>AGENTS.md</code> 是所有協作 AI 的工作手冊。當任何 AI 接到「新增早餐品項」的要求時，必須執行標準的 <em>Ingest 流程</em>：
+          </p>
+          <ol>
+            <li>讀取 <code>AGENTS.md</code> 檢視資料規範與分類清單。</li>
+            <li>在 <code>data/breakfast.json</code> 中新增結構完整、數值客觀的 JSON 物件。</li>
+            <li>在 <code>assets/images/</code> 提供相應的插圖或圖片檔案。</li>
+            <li>同步更新目錄索引與異動紀錄（<code>index.md</code> 與 <code>log.md</code>）。</li>
+            <li>執行網頁視覺與篩選功能驗證，確保完全無破版。</li>
+          </ol>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <!-- 網站頁尾 -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span>🍳 早餐店品項 Breakfast Wiki</span>
+      </div>
+      <div class="footer-disclaimer">
+        ⚠️ <strong>免責聲明與提醒：</strong>本網站所有營養資訊僅供一般飲食規劃與大眾日常參考。熱量及各項營養素數據會因各早餐店之品牌、食材規格、分量比例及煎台烹調手法不同而有所差異。
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">返回首頁品項</a>
+        <a href="../AGENTS.md">AI 開發規範 (AGENTS.md)</a>
+      </div>
+      <div class="footer-copyright">
+        © 2026 Breakfast Wiki Project. Inspired by Karpathy LLM Wiki Architecture.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="100%" height="100%">
+  <rect width="400" height="260" rx="16" fill="#FFFDF9"/>
+  <ellipse cx="200" cy="225" rx="135" ry="15" fill="#EADBCC" opacity="0.6"/>
+
+  <!-- Taiwanese Sticky Rice Roll (Fantuan) wrapped in clear wrap cut in half -->
+  <g transform="translate(130, 95)">
+    <!-- Rice Body (White sticky rice with distinct grains) -->
+    <path d="M20,60 C0,30 20,5 75,5 C130,5 150,30 130,60 C110,90 40,90 20,60 Z" fill="#FFFFFF" stroke="#CFD8DC" stroke-width="3"/>
+    
+    <!-- Cross-section showing fillings: You-tiao (cruller), Pork Floss, Pickled radish -->
+    <!-- Fried Cruller center (Crunchy brown double ring) -->
+    <circle cx="75" cy="45" r="14" fill="#D35400" stroke="#935116" stroke-width="3"/>
+    <circle cx="75" cy="45" r="7" fill="#F8C471"/>
+
+    <!-- Pork floss (Fluffy brown/gold around cruller) -->
+    <ellipse cx="50" cy="42" rx="9" ry="14" fill="#B9770E"/>
+    <ellipse cx="100" cy="42" rx="9" ry="14" fill="#B9770E"/>
+
+    <!-- Pickled mustard greens / radish (Green/yellow speckles) -->
+    <circle cx="65" cy="24" r="3.5" fill="#689F38"/>
+    <circle cx="85" cy="24" r="3.5" fill="#FBC02D"/>
+    <circle cx="70" cy="65" r="3.5" fill="#689F38"/>
+    <circle cx="85" cy="65" r="3.5" fill="#FBC02D"/>
+
+    <!-- Rice grains texture around -->
+    <ellipse cx="35" cy="25" rx="3" ry="5" fill="#ECEFF1"/>
+    <ellipse cx="115" cy="25" rx="3" ry="5" fill="#ECEFF1"/>
+    <ellipse cx="35" cy="65" rx="3" ry="5" fill="#ECEFF1"/>
+    <ellipse cx="115" cy="65" rx="3" ry="5" fill="#ECEFF1"/>
+  </g>
+
+  <text x="200" y="42" font-family="'PingFang TC', 'Microsoft JhengHei', sans-serif" font-weight="bold" font-size="18" fill="#5D4037" text-anchor="middle">台式傳統飯糰</text>
+  <text x="200" y="65" font-family="'PingFang TC', 'Microsoft JhengHei', sans-serif" font-size="13" fill="#8D6E63" text-anchor="middle">Taiwanese Sticky Rice Roll</text>
+</svg>

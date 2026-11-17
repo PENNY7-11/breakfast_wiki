@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="100%" height="100%">
+  <rect width="400" height="260" rx="16" fill="#FFFDF9"/>
+  <ellipse cx="200" cy="225" rx="130" ry="14" fill="#EADBCC" opacity="0.6"/>
+
+  <!-- Hot Soup Bowl with Spoon and Steam -->
+  <!-- Plate Under Bowl -->
+  <ellipse cx="200" cy="180" rx="105" ry="32" fill="#E8DFD8" stroke="#D7C9B8" stroke-width="2"/>
+  
+  <!-- Bowl Outer Body -->
+  <path d="M120,135 C120,195 280,195 280,135 Z" fill="#FFFFFF" stroke="#E2D7C7" stroke-width="4"/>
+  <ellipse cx="200" cy="135" rx="80" ry="24" fill="#FFFFFF" stroke="#E2D7C7" stroke-width="3"/>
+
+  <!-- Cream Corn Soup Surface -->
+  <ellipse cx="200" cy="137" rx="72" ry="20" fill="#F9E79F"/>
+  <ellipse cx="200" cy="137" rx="66" ry="17" fill="#F7DC6F"/>
+
+  <!-- Corn kernels & egg ribbons floating -->
+  <circle cx="160" cy="138" r="4.5" fill="#F39C12"/>
+  <circle cx="185" cy="142" r="4" fill="#F39C12"/>
+  <circle cx="215" cy="135" r="5" fill="#F39C12"/>
+  <circle cx="235" cy="140" r="4" fill="#F39C12"/>
+  <circle cx="175" cy="132" r="3.5" fill="#F39C12"/>
+  
+  <!-- Egg drop ribbons -->
+  <path d="M150,140 Q170,145 190,138" stroke="#FFF9C4" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M195,142 Q215,136 240,142" stroke="#FFF9C4" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Black pepper specks -->
+  <circle cx="170" cy="140" r="1.5" fill="#3E2723"/>
+  <circle cx="205" cy="133" r="1.5" fill="#3E2723"/>
+  <circle cx="225" cy="143" r="1.5" fill="#3E2723"/>
+
+  <!-- Spoon resting on rim -->
+  <g transform="translate(255, 120) rotate(35)">
+    <path d="M0,0 C-10,0 -15,15 0,25 C15,15 10,0 0,0 Z" fill="#ECEFF1" stroke="#CFD8DC" stroke-width="2"/>
+    <rect x="-3" y="-35" width="6" height="38" rx="3" fill="#CFD8DC"/>
+  </g>
+
+  <!-- Steam lines -->
+  <path d="M185,105 Q175,85 188,68" fill="none" stroke="#BCAAA4" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <path d="M215,102 Q228,82 216,65" fill="none" stroke="#BCAAA4" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+
+  <text x="200" y="42" font-family="'PingFang TC', 'Microsoft JhengHei', sans-serif" font-weight="bold" font-size="18" fill="#5D4037" text-anchor="middle">台式玉米濃湯</text>
+  <text x="200" y="65" font-family="'PingFang TC', 'Microsoft JhengHei', sans-serif" font-size="13" fill="#8D6E63" text-anchor="middle">Taiwanese Cream Corn Soup</text>
+</svg>
